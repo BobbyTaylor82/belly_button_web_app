@@ -2,6 +2,8 @@
 
 The objective for this project was to build an interactive web application to explore the [Belly Button Biodiversity DataSet](http://robdunnlab.com/projects/belly-button-biodiversity/) and deploy on Heroku.
 
+here is the link to the app https://belly-button-diversity.herokuapp.com
+
 ## Tool Used:
 <ul>
   <li>Python</li>
