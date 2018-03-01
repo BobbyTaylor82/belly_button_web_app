@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +21,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
-      
+        body {
+            background-color: gray;
+        }
     </style>
 </head>
 
 <body>
     <div class="container text-center">
-        <div  class="jumbotron">
+        <div class="jumbotron">
             <h1 style="font-family:'Courier New', Courier, monospace;">{{title}}</h1>
             <p style="font-family:'Courier New', Courier, monospace;">{{paragraph}}</p>
             <p style="font-family:'Courier New', Courier, monospace;">{{paragraph4}}</p>
@@ -34,7 +37,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div style="background-color:aliceblue;">
-                    <label for="" style= "font-family: fantasy;">Select Sample ID</label>
+                    <label for="" style="font-family: fantasy;">Select Sample ID</label>
                     <br>
                     <select id="nameSelection" onchange="optionChanged(this)">
                     </select>
@@ -52,19 +55,35 @@
                     <div style="height:20px"></div>
                 </div>
             </div>
-            <div style="background-color:aliceblue;"class="col-md-6" >
+            <div class="col-md-6" style="background-color:aliceblue;margin-left:50px;" > 
                 <h3 style="font-family: fantasy;">Most Common Bacterica Found by OTU ID</h3>
                 <hr>
                 <div id="pieChart"></div>
                 <div style="height:20px"></div>
+            
             </div>
         </div>
-        <div id="bubble" style="width: 480px; height: 400px; margin-top:40px;"></div>
-        <h3 id="WWFG" style="padding-right:90px;margin-top:150px;font-family: fantasy;">
-            <u>Weekly Washing Frequency Gauge</u>
-        </h3>
-        <div id="lol" style="margin-bottom:-400px"></div>
+
+        <hr>
+
+        <div class="rows">
+
+        <div class="col-md-5" style="margin-top:58px; padding-right:75px;"  >
+                <div id="bubble"></div>
+
+            </div>
+
+            <div class="col-md-5" >
+                <h4 id="WWFG" style="font-family:fantasy; padding-left:200px; color:white;">
+                    <u>Weekly Washing Frequency Gauge</u>
+                </h4>
+                <div id="lol" style="margin-bottom:0"></div>
+            </div>
+
+        </div>
     </div>
+
+    <div style="height:30px;"></div>
     <script src="https://fastcdn.org/D3.js/3.5.6/d3.min.js"></script>
     <script>
         // create drop down
@@ -184,8 +203,8 @@
                                 }],
                                 title: "Scrubs Per Week",
                                 Speed: "0-100",
-                                height: 600,
-                                width: 1000,
+                                height: 330,
+                                width: 650,
                                 xaxis: {
                                     zeroline: false,
                                     showticklabels: false,
@@ -231,14 +250,14 @@
             }];
 
             var layoutPIE = {
-                height: 600,
-                width: 500
+                height: 300,
+                width: 475
             };
 
             Plotly.newPlot("pieChart", dataPIE, layoutPIE);
 
 
-        // bubble plot
+            // bubble plot
             var trace1 = {
                 x: otu_id_LIST,
                 y: total_LIST,
@@ -251,7 +270,7 @@
 
                     labels: taxonomic_LIST,
                     opacity: [1, 0.8, 0.6, 0.4],
-                    size: [200, 175, 150, 100, 50, 75, 50, 25, 10]
+                    size: [100, 75, 60, 50, 40, 30, 20, 15, 5]
                 }
             };
 
@@ -266,13 +285,14 @@
                 },
                 yaxis: {
                     range: [0, 20500],
-                    title:"Total Bacterica Found"
+                    title: "Total Bacterica Found"
                 },
-                height: 500,
-                width: 1000
+                height: 350,
+                width: 450
             };
             Plotly.newPlot('bubble', data, layout);
         });
     </script>
 </body>
+
 </html>
